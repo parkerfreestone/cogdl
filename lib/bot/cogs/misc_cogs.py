@@ -5,8 +5,8 @@ import discord
 class MiscCogs(commands.Cog):
     def __init__(self, bot):
         self.client = bot
-        self._last_member = None
 
+    # Sample command to use
     @app_commands.command()
     async def hello(self, interaction: discord.Interaction):
         """Says Hello!"""
