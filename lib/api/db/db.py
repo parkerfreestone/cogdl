@@ -4,13 +4,16 @@ from ..models.teams import Teams
 def connect_database():
     database.connect()
 
+
 def close_database():
     if not database.is_closed():
         database.close()
-    
+
+
 def create_tables(models):
     with database:
         database.create_tables(models)
+
 
 def init_database():
     connect_database()

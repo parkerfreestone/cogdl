@@ -2,6 +2,7 @@ from discord import ui
 import aiohttp
 import discord
 
+# This needs to be better :thumbs_down:
 API_BASE_URL = 'http://localhost:8000'
 
 class TeamCreationModal(ui.Modal, title='Register Your Team'):

@@ -9,5 +9,6 @@ class BaseModel(Model):
     class Meta:
         database = database
 
+
 class BaseModelWithUUID(BaseModel):
     id = UUIDField(primary_key=True, default=uuid.uuid4)

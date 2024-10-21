@@ -2,15 +2,9 @@ from fastapi import APIRouter, HTTPException
 from ..models.teams import Teams
 from ..models.base_models import BaseModel
 
+# Route Config
 teams_router = APIRouter(prefix='/teams', tags=["teams"])
 
-class TeamCreate(BaseModel):
-    user: str
-    name: str
-    city: str
-    primary_color: str
-    secondary_color: str
-    stadium_name: str
 
 @teams_router.get('/')
 async def get_teams():
@@ -26,6 +20,7 @@ async def get_team_by_id(team_id: int):
         raise HTTPException(status_code=404, detail="Team not found")
     
     return team
+
 
 @teams_router.post('/')
 async def create_team(team_data):
