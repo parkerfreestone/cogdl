@@ -3,11 +3,12 @@ from contextlib import asynccontextmanager
 
 from .db.db import init_database, close_database
 from .routes.teams_routes import teams_router
+from .routes.users_routes import users_router
 
 import logging
 import sys
 
-# Logger config
+# Logger config (Should prob be moved to it's own file since it's ugly as fuck)
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 stream_handler = logging.StreamHandler(sys.stdout)
@@ -20,6 +21,7 @@ logger.addHandler(stream_handler)
 async def lifespan(app: FastAPI):
     logger.info('--# Initializing database #--')
     init_database()
+    logger.info('--# Database initialized #--')
 
     # TODO: Main App Logic Here ;P
     
@@ -32,4 +34,6 @@ async def lifespan(app: FastAPI):
 # Create our app instance
 app = FastAPI(lifespan=lifespan)
 
+# Setup all API routes
 app.include_router(teams_router)
+app.include_router(users_router)
