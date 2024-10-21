@@ -22,14 +22,10 @@ class TeamCreationModal(ui.Modal, title='Register Your Team'):
         }
 
         async with aiohttp.ClientSession() as session:
-            async with session.post(f"{API_BASE_URL}/teams", json=team_data) as response:
-                if response == 200:
+            async with session.post(f"{API_BASE_URL}/teams/", json=team_data) as response:
+                if response.status == 200:
                     response_data = await response.json()
                     await interaction.response.send_message(f'{response_data["name"]}', ephemeral=True)
                 else:
                     error_data = await response.text()
-                    await interaction.response.send_message('Error creating team.', ephemeral=True)
-
-        async def on_error(self, interaction: discord.Interaction, error: Exception) -> None:
-            await interaction.response.send_message('Oops! Something went wrong.', ephemeral=True)
-            print(f"Error in TeamCreationModal: {str(error)}")
+                    await interaction.response.send_message(f'Error creating team.\n\n {error_data}', ephemeral=True)

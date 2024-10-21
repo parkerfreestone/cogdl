@@ -17,9 +17,10 @@ logger.addHandler(stream_handler)
 
 # FastAPI Lifespan Method for startup and cleanup
 @asynccontextmanager
-async def lifespan():
+async def lifespan(app: FastAPI):
     logger.info('--# Initializing database #--')
     init_database()
+    logger.info('--# Database initialized #--')
 
     # TODO: Main App Logic Here ;P
     

@@ -13,9 +13,10 @@ class Teams(BaseModelWithUUID):
     secondary_color = CharField(max_length=7)
     stadium_name = CharField(max_length=50)
     
-    # TODO: CHANGE THIS LATER WHEN DIVISIONS EXIST
+    # TODO: Change this later when divisions exist
     division = CharField(max_length=50, null=True)
     
+    # TODO: More R&D on this... Might have a seperate table for specific games/records
     wins = IntegerField(default=0)
     losses = IntegerField(default=0)
 
