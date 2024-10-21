@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 
 from .db.db import init_database, close_database
 from .routes.teams_routes import teams_router
+from .routes.users_routes import users_router
 
 import logging
 import sys
@@ -35,3 +36,4 @@ app = FastAPI(lifespan=lifespan)
 
 # Setup all API routes
 app.include_router(teams_router)
+app.include_router(users_router)

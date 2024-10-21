@@ -22,19 +22,3 @@ class Teams(BaseModelWithUUID):
 
     created_at = DateTimeField(default=datetime.datetime.now)
     updated_at = DateTimeField(default=datetime.datetime.now)
-
-    def dict(self):
-        return {
-            "id": str(self.id),
-            "user": self.user,
-            "name": self.name,
-            "city": self.city,
-            "primary_color": self.primary_color,
-            "secondary_color": self.secondary_color,
-            "stadium_name": self.stadium_name,
-            "division": self.division,
-            "wins": self.wins,
-            "losses": self.losses,
-            "created_at": self.created_at.isoformat(),
-            "updated_at": self.updated_at.isoformat()
-        }
