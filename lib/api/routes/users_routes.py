@@ -3,10 +3,10 @@ from ..schemas.users_schema import UserSchema
 from ..services.users_service import UsersService
 
 # Route Config
-users_router = APIRouter(prefix='/users', tags=["users"])
+users_router = APIRouter(prefix="/users", tags=["users"])
 
 
-@users_router.post('/', status_code=status.HTTP_201_CREATED)
+@users_router.post("/", status_code=status.HTTP_201_CREATED)
 async def register_user(user_data: UserSchema):
     try:
         result = await UsersService.register_user(user_data)

@@ -1,9 +1,10 @@
 from peewee import SqliteDatabase, Model, UUIDField
 import uuid
 
-DATABASE = 'cogdl.db'
+DATABASE = "cogdl.db"
 
 database = SqliteDatabase(DATABASE)
+
 
 class BaseModel(Model):
     class Meta:

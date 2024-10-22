@@ -3,7 +3,8 @@ from discord import app_commands
 import aiohttp
 import discord
 
-API_BASE_URL = 'http://localhost:8000'
+from env import API_BASE_URL
+
 
 # A Cog to hold our team based commands
 class UserCogs(commands.Cog):
@@ -22,14 +23,22 @@ class UserCogs(commands.Cog):
 
             async with session.post(f"{API_BASE_URL}/users/", json=payload) as response:
                 if response.status == 201:
-                    await interaction.response.send_message(f"{interaction.user.mention}, Successfully registered", ephemeral=True)
+                    await interaction.response.send_message(
+                        f"{interaction.user.mention}, Successfully registered",
+                        ephemeral=True,
+                    )
                 else:
                     error_data = await response.json()
-                    error_message = error_data.get("detail",)
-                    await interaction.response.send_message(f"{interaction.user.mention}, Error registering - {error_message}", ephemeral=True)
+                    error_message = error_data.get(
+                        "detail",
+                    )
+                    await interaction.response.send_message(
+                        f"{interaction.user.mention}, Error registering - {error_message}",
+                        ephemeral=True,
+                    )
 
+        await interaction.response.send_message(f"{user_id, user_name}")
 
-        await interaction.response.send_message(f'{user_id, user_name}')
 
 async def setup(bot):
     await bot.add_cog(UserCogs(bot))

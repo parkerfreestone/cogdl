@@ -2,6 +2,7 @@ from ..models.base_models import database
 from ..models.teams import Teams
 from ..models.users import Users
 
+
 def connect_database():
     database.connect()
 
