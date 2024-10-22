@@ -1,13 +1,15 @@
 from dotenv import load_dotenv
 from discord.ext import commands
+from env import GUILD_ID, BOT_TOKEN
+
 import discord
 import asyncio
-import os
+
 
 load_dotenv()
 
-DEFAULT_GUILD = os.getenv("GUILD_ID")
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+DEFAULT_GUILD = GUILD_ID
+BOT_TOKEN = BOT_TOKEN
 
 EXTENSIONS = ('cogs.misc_cogs', 'cogs.team_cogs', 'cogs.user_cogs')
 INTENTS = discord.Intents.default()

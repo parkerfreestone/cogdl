@@ -1,4 +1,3 @@
-from lib.bot.ui.team_creation_modal import TeamCreationModal
 from discord.ext import commands
 from discord import app_commands
 import aiohttp
