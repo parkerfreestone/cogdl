@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord import app_commands
 import discord
 
+
 # A Cog to hold our team based commands
 class TeamCogs(commands.Cog):
     def __init__(self, bot):
@@ -19,6 +20,7 @@ class TeamCogs(commands.Cog):
     async def my_team(self, interaction: discord.Interaction):
         """View your team"""
         await interaction.response.send_modal(TeamCreationModal())
+
 
 async def setup(bot):
     await bot.add_cog(TeamCogs(bot))

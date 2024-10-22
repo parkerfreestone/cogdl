@@ -2,15 +2,22 @@ from discord import ui
 import aiohttp
 import discord
 
-# This needs to be better :thumbs_down:
-API_BASE_URL = 'http://localhost:8000'
+from env import API_BASE_URL
 
-class TeamCreationModal(ui.Modal, title='Register Your Team'):
-    name = ui.TextInput(label='Team Name', placeholder='Binturong', required=True)
-    city = ui.TextInput(label='City', placeholder='Bismarck', required=True)
-    primary_color = ui.TextInput(label='Primary Hex Color', placeholder='#afafaf', required=True)
-    secondary_color = ui.TextInput(label='Secondary Hex Color', placeholder='#000000', required=True)
-    stadium_name = ui.TextInput(label='Stadium Name', placeholder='Mf Trap House', required=True)
+
+# This needs to be better :thumbs_down:
+class TeamCreationModal(ui.Modal, title="Register Your Team"):
+    name = ui.TextInput(label="Team Name", placeholder="Binturong", required=True)
+    city = ui.TextInput(label="City", placeholder="Bismarck", required=True)
+    primary_color = ui.TextInput(
+        label="Primary Hex Color", placeholder="#afafaf", required=True
+    )
+    secondary_color = ui.TextInput(
+        label="Secondary Hex Color", placeholder="#000000", required=True
+    )
+    stadium_name = ui.TextInput(
+        label="Stadium Name", placeholder="Mf Trap House", required=True
+    )
 
     async def on_submit(self, interaction: discord.Interaction):
         team_data = {
@@ -22,10 +29,16 @@ class TeamCreationModal(ui.Modal, title='Register Your Team'):
         }
 
         async with aiohttp.ClientSession() as session:
-            async with session.post(f"{API_BASE_URL}/teams/", json=team_data) as response:
+            async with session.post(
+                f"{API_BASE_URL}/teams/", json=team_data
+            ) as response:
                 if response.status == 200:
                     response_data = await response.json()
-                    await interaction.response.send_message(f'{response_data["name"]}', ephemeral=True)
+                    await interaction.response.send_message(
+                        f'{response_data["name"]}', ephemeral=True
+                    )
                 else:
                     error_data = await response.text()
-                    await interaction.response.send_message(f'Error creating team.\n\n {error_data}', ephemeral=True)
+                    await interaction.response.send_message(
+                        f"Error creating team.\n\n {error_data}", ephemeral=True
+                    )

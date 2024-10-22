@@ -16,7 +16,16 @@ fastapi = {extras = ["standard"], version = "^0.115.2"}
 peewee = "^3.17.7"
 python-dotenv = "^1.0.1"
 aiohttp = "^3.10.10"
+openai = "^1.52.0"
+pre-commit = "^4.0.1"
 
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
 
 [build-system]
 requires = ["poetry-core"]
