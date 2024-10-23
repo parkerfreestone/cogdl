@@ -6,6 +6,8 @@ from .seasons import Seasons
 
 class TeamRecords(BaseModelWithUUID):
     team = ForeignKeyField(Teams, backref="records")
+
     season = ForeignKeyField(Seasons, backref="team_records")
+
     wins = IntegerField(default=0)
     losses = IntegerField(default=0)

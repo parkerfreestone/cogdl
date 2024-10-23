@@ -4,8 +4,6 @@ from .base_models import BaseModelWithUUID
 from .stadiums import Stadiums
 from .users import Users
 
-import datetime
-
 
 class Teams(BaseModelWithUUID):
     # Discord user associated with the team
@@ -21,6 +19,3 @@ class Teams(BaseModelWithUUID):
     division = DivisionField(null=True)
 
     stadium = ForeignKeyField(Stadiums, backref="team")
-
-    created_at = DateTimeField(default=datetime.datetime.now)
-    updated_at = DateTimeField(default=datetime.datetime.now)
