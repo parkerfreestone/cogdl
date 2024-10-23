@@ -37,8 +37,6 @@ class UserCogs(commands.Cog):
                         ephemeral=True,
                     )
 
-        await interaction.response.send_message(f"{user_id, user_name}")
-
 
 async def setup(bot):
     await bot.add_cog(UserCogs(bot))
