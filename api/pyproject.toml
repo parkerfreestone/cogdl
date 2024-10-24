@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "cogdl-api"
+version = "0.1.0"
+description = "Church of Gromp Football League REST API"
+authors = ["Parker Freestone <parkerfreestone@gmail.com>"]
+readme = "README.md"
+packages = [
+    { include = "core", from = "src" },
+    { include = "db", from = "src" },
+    { include = "models", from = "src" },
+    { include = "routes", from = "src" },
+    { include = "schemas", from = "src" },
+    { include = "services", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["standard"], version = "^0.115.2"}
+peewee = "^3.17.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

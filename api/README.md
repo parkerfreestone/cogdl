@@ -1,0 +1,3 @@
+# Church of Gromp Dodgeball League API
+
+Docs coming soon...

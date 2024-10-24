@@ -1,0 +1,12 @@
+# Exclude virtual environments
+.venv/
+__pycache__/
+*.pyc
+
+# Exclude local environment files
+.env.example
+.vscode/
+
+# Exclude any local dev files you don’t want
+*.log
+.DS_Store
