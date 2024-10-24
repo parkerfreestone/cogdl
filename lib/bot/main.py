@@ -1,12 +1,12 @@
-from dotenv import load_dotenv
 from discord.ext import commands
 from env import GUILD_ID, BOT_TOKEN
 
+import logging
 import discord
 import asyncio
 
-
-load_dotenv()
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 DEFAULT_GUILD = GUILD_ID
 BOT_TOKEN = BOT_TOKEN
@@ -23,6 +23,12 @@ bot = commands.Bot(command_prefix="!", intents=INTENTS)
 async def setup_hook():
     for extension in EXTENSIONS:
         await bot.load_extension(extension)
+
+
+@bot.event
+async def on_command_error(ctx, error):
+    logger.error(f"Error in command '{ctx.command}': {error}")
+    await ctx.send(f"An error occurred: {error}")
 
 
 # Runs when our bot starts up
