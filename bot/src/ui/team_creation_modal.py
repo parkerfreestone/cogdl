@@ -8,6 +8,7 @@ load_dotenv(find_dotenv())
 
 API_BASE_URL = os.getenv("API_BASE_URL")
 
+
 # This needs to be better :thumbs_down:
 class TeamCreationModal(ui.Modal, title="Register Your Team"):
     name = ui.TextInput(label="Team Name", placeholder="Binturong", required=True)

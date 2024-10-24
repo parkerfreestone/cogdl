@@ -10,6 +10,7 @@ load_dotenv(find_dotenv())
 
 API_BASE_URL = os.getenv("API_BASE_URL")
 
+
 # A Cog to hold our team based commands
 class UserCogs(commands.Cog):
     def __init__(self, bot):
