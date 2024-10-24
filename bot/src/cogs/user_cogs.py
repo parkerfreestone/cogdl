@@ -38,7 +38,7 @@ class UserCogs(commands.Cog):
                         "detail",
                     )
                     await interaction.response.send_message(
-                        f"{interaction.user.mention}, Error registering - {error_message}",
+                        f"{interaction.user.mention}, Error - {error_message}",
                         ephemeral=True,
                     )
 

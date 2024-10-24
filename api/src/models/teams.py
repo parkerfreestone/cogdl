@@ -1,4 +1,4 @@
-from peewee import CharField, DateTimeField, ForeignKeyField
+from peewee import CharField, ForeignKeyField
 from ..db.fields.division_field import DivisionField
 from .base_models import BaseModelWithUUID
 from .stadiums import Stadiums

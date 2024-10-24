@@ -13,5 +13,6 @@ class UsersService:
         if existing_user:
             raise ValueError("User already registered")
 
-        new_user = Users.create(**user_data.model_dump())
+        Users.create(**user_data.model_dump())
+
         return {"message": "User registerd successfully", "status_code": 201}
